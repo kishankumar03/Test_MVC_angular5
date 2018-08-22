@@ -1,0 +1,33 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let emp of employee"
+      [class.selected]="emp === selectedEmployee"
+      (click)="onSelect(emp)">
+    <span class="badge">{{emp.id}}</span> {{emp.firstName + ' ' + emp.lastName}} - {{emp.age}}
+  </li>
+</ul>
+
+<div *ngIf="currentEmployee">
+
+  <h2>{{currentEmployee.firstName | uppercase}} Details</h2>
+  <div><span>id: </span>{{currentEmployee.id}}</div>
+  <div>
+    <label>
+      First Name:
+      <input [ngModel]="currentEmployee.firstName" placeholder="name">
+    </label>
+  </div>
+  <div>
+    <label>
+      Last Name:
+      <input [ngModel]="currentEmployee.lastName" placeholder="name">
+    </label>
+  </div>
+  <div>
+    <label>
+      Age:
+      <input [ngModel]="currentEmployee.age" placeholder="name">
+    </label>
+  </div>
+  <input type="button" (click)="onSave(currentEmployee)" value="Save" />
+</div>
